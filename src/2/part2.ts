@@ -1,4 +1,4 @@
-import {readInputContents} from '../generic/Utils.ts';
+import { readInputContents } from '../generic/Utils.ts';
 
 enum Action {
 	ROCK,
@@ -20,7 +20,10 @@ const translateEnemyChoiceToAction = (choice: EnemyChoice): Action => {
 	}
 	throw new Error('Could not translate choice ' + choice);
 };
-const translateOutcomeOfTheGameToAction = (enemyAction: Action, outcomeOfTheGame: OutcomeOfTheGame): Action => {
+const translateOutcomeOfTheGameToAction = (
+	enemyAction: Action,
+	outcomeOfTheGame: OutcomeOfTheGame,
+): Action => {
 	if (outcomeOfTheGame === 'Y') {
 		return enemyAction;
 	}
@@ -98,7 +101,10 @@ let totalSum = 0;
 for (const item of split) {
 	const choices = item.split(' ');
 	const enemyAction: Action = translateEnemyChoiceToAction(choices[0] as EnemyChoice);
-	const myAction: Action = translateOutcomeOfTheGameToAction(enemyAction, choices[1] as OutcomeOfTheGame);
+	const myAction: Action = translateOutcomeOfTheGameToAction(
+		enemyAction,
+		choices[1] as OutcomeOfTheGame,
+	);
 	const pointsBasedOnChoice = calculatePointsBasedOnMyAction(myAction);
 	const pointsBasedOnOutcome = calculatePointsBasedOnTheOutcomeOfTheGame(myAction, enemyAction);
 	totalSum += pointsBasedOnOutcome + pointsBasedOnChoice;
