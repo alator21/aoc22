@@ -4,7 +4,10 @@ const text = await readInputContents(3, 2);
 
 const split: string[] = text.split('\n');
 
-function calculateCommonItems(itemsOfTheFirstComparment: string, itemsOfTheSecondComparment: string):Set<string> {
+function calculateCommonItems(
+	itemsOfTheFirstComparment: string,
+	itemsOfTheSecondComparment: string,
+): Set<string> {
 	const firstComparmentItems = itemsOfTheFirstComparment.split('');
 	const secondComparmentItems = itemsOfTheSecondComparment.split('');
 	const commonItems = new Set<string>();

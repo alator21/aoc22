@@ -1,10 +1,13 @@
-import {readInputContents} from '../generic/Utils.ts';
+import { readInputContents } from '../generic/Utils.ts';
 
 const text = await readInputContents(3, 2);
 
 const split: string[] = text.split('\n');
 
-function calculateCommonItems(itemsOfTheFirstComparment: string, itemsOfTheSecondComparment: string): Set<string> {
+function calculateCommonItems(
+	itemsOfTheFirstComparment: string,
+	itemsOfTheSecondComparment: string,
+): Set<string> {
 	const firstComparmentItems = itemsOfTheFirstComparment.split('');
 	const secondComparmentItems = itemsOfTheSecondComparment.split('');
 	const commonItems = new Set<string>();
@@ -15,7 +18,6 @@ function calculateCommonItems(itemsOfTheFirstComparment: string, itemsOfTheSecon
 	}
 	return commonItems;
 }
-
 
 function calculatePriority(character: string) {
 	const characterCode = character.charCodeAt(0);
@@ -28,7 +30,11 @@ function calculatePriority(character: string) {
 	throw new Error('Could not calculate priority for character ' + character);
 }
 
-function findTheOnlyCommonItem(rucksackItems1: string, rucksackItems2: string, rucksackItems3: string): string {
+function findTheOnlyCommonItem(
+	rucksackItems1: string,
+	rucksackItems2: string,
+	rucksackItems3: string,
+): string {
 	const commonItems1And2 = calculateCommonItems(rucksackItems1, rucksackItems2);
 	const commonItems2And3 = calculateCommonItems(rucksackItems2, rucksackItems3);
 	const commonItems1And3 = calculateCommonItems(rucksackItems1, rucksackItems3);
@@ -45,7 +51,11 @@ for (let i = 0; i < split.length; i += 3) {
 	const rucksackItems1 = split[i];
 	const rucksackItems2 = split[i + 1];
 	const rucksackItems3 = split[i + 2];
-	const commonItemInRucksacks = findTheOnlyCommonItem(rucksackItems1, rucksackItems2, rucksackItems3);
+	const commonItemInRucksacks = findTheOnlyCommonItem(
+		rucksackItems1,
+		rucksackItems2,
+		rucksackItems3,
+	);
 	totalSum += calculatePriority(commonItemInRucksacks);
 }
 console.log(totalSum);
