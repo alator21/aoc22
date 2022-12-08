@@ -26,3 +26,8 @@ format:
 	deno run --allow-read src/5/part1.ts
 52:
 	deno run --allow-read src/5/part2.ts
+
+61:
+	deno run --allow-read src/6/part1.ts
+62:
+	deno run --allow-read src/6/part2.ts
